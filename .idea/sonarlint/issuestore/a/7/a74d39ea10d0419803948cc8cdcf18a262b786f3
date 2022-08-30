@@ -1,0 +1,5 @@
+
+lpython:S1542	"TRename function "cosineDistance" to match the regular expression ^[a-z_][a-z0-9_]*$.(…§ªŒ
+;python:S125"Remove this commented out code.(ÆÎ´õúÿÿÿÿ
+tpython:S1542"WRename function "euclideanDistance" to match the regular expression ^[a-z_][a-z0-9_]*$.(¢‡Éıÿÿÿÿ
+xpython:S1542"[Rename function "realEuclideanDistance" to match the regular expression ^[a-z_][a-z0-9_]*$.(„ÏÊáûÿÿÿÿ

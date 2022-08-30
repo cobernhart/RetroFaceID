@@ -1,0 +1,7 @@
+
+Ktypescript:S1128"*Remove this unused import of 'ElementRef'.(‹×Ÿüÿÿÿÿ
+Jtypescript:S1128")Remove this unused import of 'ViewChild'.(‹×Ÿüÿÿÿÿ
+?typescript:S1186"#Unexpected empty method 'ngOnInit'.(Åˆ³Â
+Wtypescript:S1117)"/'event' is already declared in the upper scope.(àùÉªşÿÿÿÿ8ñ—›Û¬0
+typescript:S18743"ä'subscribe' is deprecated. Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments(«“™øÿÿÿÿ8Ûàïú¬0
+ˆtypescript:S1874="ä'subscribe' is deprecated. Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments(À…Šš8Ûàïú¬0

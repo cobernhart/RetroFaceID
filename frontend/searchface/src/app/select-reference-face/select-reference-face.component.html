@@ -1,0 +1,15 @@
+<div class="container">
+  <div  class="containerImage">
+    <div *ngIf="!url" class="rectanglePlaceholder">
+      <div class="questionMarkText">
+        ?
+      </div>
+    </div>
+    <img *ngIf="url" [src]="url"/>
+    <div *ngFor="let box of boxes; index as i" [id]="i" [ngClass]="{'rectFocus' : i == selectedFace}" (click)=" faceSelect($event)" class="rectangle" [ngStyle]="{'left': resizeBoxes(box[0]) + 'px', 'top': resizeBoxes(box[1])+ 'px', 'width': resizeBoxes(box[2] - box[0]) + 'px', 'height': resizeBoxes(box[3] - box[1]) + 'px'}"></div>
+  </div>
+  <div class="sMargin">
+    <button mat-raised-button  color="accent" (click)="fileInput.click()">Select Image</button>
+  </div>
+    <input hidden #fileInput type="file" (change)="onFileSelected($event)"/>
+</div>

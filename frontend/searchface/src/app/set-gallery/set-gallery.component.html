@@ -1,0 +1,14 @@
+<div class="container">
+  <form class="example-form" class="mMargin" >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Gallery Path</mat-label>
+      <input matInput placeholder="/Users/costa/Desktop/Bachelorarbeit/baProject/" id="pathInput" value="/Users/costa/Desktop/KevinBock" #path>
+    </mat-form-field>
+  </form>
+  <div class="">
+  <button mat-raised-button color="accent" (click)="savePath(path.value)">Save</button>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,17 @@
+
+xpython:S117"\Rename this local variable "elasticFace" to match the regular expression ^[_a-z][a-z0-9_]*$.(ï”¡Ïøÿÿÿÿ
+opython:S117*"XRename this local variable "faceBOX" to match the regular expression ^[_a-z][a-z0-9_]*$.(ªÎğİ
+vpython:S117#"ZRename this local variable "faceBOXES" to match the regular expression ^[_a-z][a-z0-9_]*$.(äìĞòşÿÿÿÿ
+xpython:S117""\Rename this local variable "faceGallery" to match the regular expression ^[_a-z][a-z0-9_]*$.(ºù×şÿÿÿÿ
+vpython:S117%"ZRename this local variable "imagePATH" to match the regular expression ^[_a-z][a-z0-9_]*$.(¥²ÃÇúÿÿÿÿ
+upython:S117$"^Rename this local variable "imagePATHlist" to match the regular expression ^[_a-z][a-z0-9_]*$.(‹³ô½
+rpython:S117"[Rename this local variable "listImages" to match the regular expression ^[_a-z][a-z0-9_]*$.(ßš°
+tpython:S117"XRename this local variable "refFace" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ğ»·ìøÿÿÿÿ
+ppython:S117"YRename this local variable "refImage" to match the regular expression ^[_a-z][a-z0-9_]*$.(ùŒ‡ç
+npython:S1173"WRename this local variable "sImage" to match the regular expression ^[_a-z][a-z0-9_]*$.(÷ïÉê
+rpython:S117"VRename this local variable "wPATH" to match the regular expression ^[_a-z][a-z0-9_]*$.(î¶àùøÿÿÿÿ
+mpython:S1542"PRename function "frPipeline" to match the regular expression ^[a-z_][a-z0-9_]*$.(•ÉÂæıÿÿÿÿ
+Jpython:S1481#"-Remove the unused local variable "faceBOXES".(äìĞòşÿÿÿÿ
+Lpython:S1481""/Remove the unused local variable "faceGallery".(ºù×şÿÿÿÿ
+;python:S125"Remove this commented out code.(Ş‘¾ùÿÿÿÿ
+;python:S125/"Remove this commented out code.(ŠêÌ“øÿÿÿÿ

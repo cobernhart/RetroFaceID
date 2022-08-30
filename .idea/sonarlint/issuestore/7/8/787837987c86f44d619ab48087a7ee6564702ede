@@ -1,0 +1,9 @@
+
+qpython:S116"URename this field "originalImage" to match the regular expression ^[_a-z][_a-z0-9]*$.(¹ÛŒ¹üÿÿÿÿ
+ppython:S116"TRename this field "originalName" to match the regular expression ^[_a-z][_a-z0-9]*$.(˜â‡œşÿÿÿÿ
+kpython:S116"ORename this field "refFace" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ÿçáşÿÿÿÿ
+kpython:S116"TRename this field "originalPath" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ì´
+upython:S117"YRename this parameter "originalImage" to match the regular expression ^[_a-z][a-z0-9_]*$.(’†Äûÿÿÿÿ
+tpython:S117"XRename this parameter "originalName" to match the regular expression ^[_a-z][a-z0-9_]*$.(’†Äûÿÿÿÿ
+tpython:S117"XRename this parameter "originalPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(’†Äûÿÿÿÿ
+opython:S117"SRename this parameter "refFace" to match the regular expression ^[_a-z][a-z0-9_]*$.(’†Äûÿÿÿÿ

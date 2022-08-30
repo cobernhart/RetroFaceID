@@ -1,0 +1,52 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.containerImage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  height: 300px;
+  width: auto;
+}
+
+.rectanglePlaceholder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 200px;
+  background-color: lightgray;
+}
+
+.questionMarkText{
+  color: grey;
+  font-size: 72px;
+}
+
+.textCenter{
+  position: absolute;
+}
+
+img {
+height: 300px;
+}
+
+.rectangle {
+  position: absolute;
+  border: limegreen;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.rectangle:hover{
+  background: rgba(255,0,0,0.5);
+}
+
+.rectFocus{
+  background: rgba(255,0,0,0.5);
+}
