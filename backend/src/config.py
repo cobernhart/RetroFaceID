@@ -5,4 +5,4 @@ config.faceId = None
 config.faces = None
 config.originalReferenceImage = None
 config.galleryPath = None
-config.outputFolderPath = "/Users/costa/Desktop/TestOutput"
+config.outputPath = None

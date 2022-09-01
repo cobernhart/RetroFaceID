@@ -8,21 +8,20 @@ import shutil
 import csv
 
 def createOutputFolder(originalImage,refFaceBox, matches):
-    if os.path.exists(config.outputFolderPath):
-        shutil.rmtree(config.outputFolderPath)
-    os.mkdir(config.outputFolderPath) #createOutputFolder
+    if os.path.exists(config.outputPath):
+        shutil.rmtree(config.outputPath)
+    os.mkdir(config.outputPath) #createOutputFolder
     #first save original referece image
-    originalImage.save(os.path.join(config.outputFolderPath,"reference-original-"+ originalImage.filename))
+    originalImage.save(os.path.join(config.outputPath,"reference-original-"+ originalImage.filename))
     #save face cropped image
     refCropped = originalImage.crop(refFaceBox)
-    refCropped.save(os.path.join(config.outputFolderPath,"reference-cropped-face-"+ originalImage.filename))
+    refCropped.save(os.path.join(config.outputPath,"reference-cropped-face-"+ originalImage.filename))
     #create image matched folder
-    MATCHED_FOLDER_PATH = os.path.join(config.outputFolderPath,"image-matched-folder")
+    MATCHED_FOLDER_PATH = os.path.join(config.outputPath,"image-matched-folder")
     os.mkdir(MATCHED_FOLDER_PATH)
     #create csv file
     header = ['fileName', 'similarityMeasure', 'parentFolderName']
-    data = ['Afghanistan', 652090, 'AF', 'AFG']
-    with open(os.path.join(config.outputFolderPath,"matches-list.csv"), 'w', encoding='UTF8') as f:
+    with open(os.path.join(config.outputPath,"matches-list.csv"), 'w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(header)
         for match in matches:

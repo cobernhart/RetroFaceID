@@ -14,33 +14,71 @@ def post_detectFaces():
     imageFile = request.files['image']
     boxes = findBoundingBoxes(imageFile)
     if boxes is None:
-        abort(422, "No Faces detected in this image, try another one")
-        return jsonify([])
+        response.status = 422
+        response = jsonify({
+            'message': 'No Faces detected in this image, try another one',
+            'boxes': boxes
+        })
+        return response
     boxesList = boxes.tolist() #prepare for json method
-    return json.dumps(boxesList)
+    response = jsonify({
+        'message': f'{str(len(boxesList)) + " faces detected"}',
+        'boxes': json.dumps(boxesList)
+    })
+    return response
 
 @api.route('/face/select', methods=['POST'])
 def post_selectFace():
     config.faceId = int(request.args.get('id'))
-    return jsonify(config.faceId)
+    api.logger.info(f'Face #{config.faceId}')
+    response = jsonify({
+        'message': f'Face #{config.faceId} selected',
+        'id': f'{config.faceId}'
+    })
+    return response
 
 @api.route('/search/start', methods=['GET'])
 def get_startSearch():
+    if config.faceId is None or config.galleryPath is None or config.outputPath is None:
+        api.logger.info(f'Search not started configs missing')
+        message = "Please provide following configurations "
+        stringList = []
+        if config.faceId is None:
+            stringList.append("a valid face")
+        if config.galleryPath is None:
+            stringList.append(" a gallery path")
+        if config.outputPath is None:
+            stringList.append(" a output path")
+        message += ','.join(stringList)
+        response.status = 422
+        response = jsonify({
+            'message': message
+        })
+        return response
     frPipeline(config.faces,config.faceId)
     api.logger.info(f'FaceRecognitionPipeline Started')
-    return "success"
+    response = jsonify({
+        'message': 'Search finished'
+    })
+    return response
 
 @api.route('/gallery/path', methods=['POST'])
 def post_setGallery():
-    config.galleryPath = request.data.decode().replace('"','')
+    config.galleryPath = request.data.decode().replace('"', '')
     api.logger.info(f'GalleryPath Set : {config.galleryPath}')
-    return config.galleryPath
+    response = jsonify({
+        'message': f'GalleryPath Set: {config.galleryPath}'
+    })
+    return response
 
-@api.route('/start', methods=['POST'])
-def post_startPipeline():
-    api.logger.info(f'Pipeline started')
-    frPipeline()
-    return 'Pipeline started'
+@api.route('/output/path', methods=['POST'])
+def post_setOutput():
+    config.outputPath = request.data.decode().replace('"', '')
+    api.logger.info(f'OutputPath Set : {config.outputPath}')
+    response = jsonify({
+        'message': f'OutputPath Set: {config.outputPath}'
+    })
+    return response
 
 if __name__ == '__main__':
     api.run()

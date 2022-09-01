@@ -13,7 +13,7 @@ def findBoundingBoxes(imageFile):
     #saveFaces as images
     faces = []
     for box in boxes:
-        faces.append(FaceImage(extract_face(rgb_img, box, image_size=112, margin=40),imageFile.filename,box,None))
+        faces.append(FaceImage(extract_face(rgb_img, box, image_size=112, margin=40),imageFile.filename,'refFaceImage',box,None))
     config.faces = faces
     return boxes
     #img.save('/Users/costa/Desktop/test.png')
