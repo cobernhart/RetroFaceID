@@ -12,22 +12,9 @@
   align-content: center;
 }
 .alert-container{
-  display: flex;
-  justify-content: center;
-}
-.alert-error{
-  color: red;
-}
-.alert-success {
-  color:greenyellow;
-}
-.alert {
-  border-radius: 10px;
-  text-align: center;
-  width: auto;
-  padding: 20px;
-  color: white;
-  margin-bottom: 15px;
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
 }
 
 .leftContainer {
