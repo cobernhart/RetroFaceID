@@ -21,7 +21,7 @@ def loopImage(directory, listImages):
     # loop through all images in folders
     for imagePATH in imagePATHlist:
         if ".jpg" not in imagePATH and ".jpeg" not in imagePATH and ".png" not in imagePATH:
-            if os.path.isdir(imagePATH):
+            if os.path.isdir(os.path.join(directory,imagePATH)):
                 loopImage(os.path.join(directory,imagePATH),listImages) #recursive call do loop through folder recusively
             continue  # if it is not an image file -> ignore and continue
         img = Image.open(os.path.join(wPATH, directory, imagePATH))

@@ -26,7 +26,7 @@ def createOutputFolder(originalImage,refFaceBox, matches):
         writer.writerow(header)
         for match in matches:
             d, faceImg = match
-            data = [faceImg.originalName, d,'todo']
+            data = [faceImg.originalName, d, faceImg.folderName]
             writer.writerow(data)
             #faceImg.img.save(os.path.)join(MATCHED_FOLDER_PATH,"m-"+ faceImg.originalName));
             # Created matched photo
