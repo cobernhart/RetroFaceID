@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Service} from "../services";
+import {NotificationService} from "../notification-service";
 
 @Component({
   selector: 'search',
@@ -8,16 +9,21 @@ import {Service} from "../services";
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private service: Service) { }
+  constructor(private service: Service, private notService: NotificationService) { }
 
   ngOnInit(): void {
   }
 
   search(){
     this.service.requestSearch().subscribe(
-      res => { console.log(res)},
+      res =>{
+        this.notService.clearAllMessages()
+        this.notService.setSuccessMessage("Success: " + res.message)
+      },
       error => { // @ts-ignore
-      console.log(error)}
+        this.notService.clearAllMessages()
+        this.notService.setErrorMessage("Error: " + error.error.message)
+      }
     );
   }
 

@@ -32,8 +32,15 @@ export class Service{
       JSON.stringify(path)
     )
   }
+  sendOutputPath(path:string): Observable<any> {
+    return this.httpClient.post<any>(
+      this.BACKENDURL + '/output/path',
+      JSON.stringify(path)
+    )
+  }
+
   // @ts-ignore
-  requestSearch() {
+  requestSearch(): Observable<any> {
     return this.httpClient.get(this.BACKENDURL + '/search/start')
   }
   handleError(error: HttpErrorResponse){
