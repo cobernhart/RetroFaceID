@@ -1,11 +1,15 @@
-<div style="mat-app-background">
 <!-- Toolbar -->
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" style="display: flex; justify-content: space-between">
     <span>SFT - SearchFaceTool</span>
+    <div>
+    <span class="alert-success" *ngIf="successMessage$ | async as successMessage">{{successMessage}}</span>
+    <span class="alert-error" *ngIf="errorMessage$ | async as errorMessage">{{errorMessage}}</span>
+    </div>
   </mat-toolbar>
 
 
 <div class="mainContainer">
+  <div class="subContainer">
     <div class="leftContainer">
       <select-reference-face></select-reference-face>
     </div>
@@ -17,6 +21,7 @@
         <search></search>
       </div>
     </div>
+  </div>
 </div>
 
 
@@ -28,7 +33,6 @@
 
 
 
-</div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -38,4 +42,4 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
+

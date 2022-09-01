@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Service} from "../services";
+import {NotificationService} from "../notification-service";
 
 @Component({
   selector: 'select-reference-face',
@@ -20,7 +21,8 @@ export class SelectReferenceFaceComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  constructor(private service: Service) { }
+  constructor(private service: Service,
+              private notService : NotificationService) { }
 
   resizeBoxes(length: number){
     let resizeFactor = this.imgHeight /  this.imageDisplayHeight;
@@ -49,9 +51,16 @@ export class SelectReferenceFaceComponent implements OnInit {
     fd.append('image',this.selectedFile,this.selectedFile.name)
     // @ts-ignore
     this.service.sendRefForFaceDetection(fd).subscribe(
-      res => {this.boxes = res; console.log(res)},
+      res => {
+        this.boxes = JSON.parse(res.boxes);
+        this.notService.clearAllMessages()
+        this.notService.setSuccessMessage("Success: " + res.message)
+        },
       error => { // @ts-ignore
-        this.boxes = undefined; console.log(error)}
+        this.boxes = undefined;
+        this.notService.clearAllMessages()
+        this.notService.setErrorMessage("Error: " + error.error.message)
+      }
     );
   }
 
@@ -59,8 +68,14 @@ export class SelectReferenceFaceComponent implements OnInit {
     this.selectedFace = event.target.id
     // @ts-ignore
     this.service.sendFaceSelection(this.selectedFace).subscribe(
-      res => console.log('Selected FaceId: ' + res),
-      error => console.log(error)
+      res => {
+        this.notService.clearAllMessages()
+        this.notService.setSuccessMessage("Success: " + res.message)
+      },
+      error => {
+        this.notService.clearAllMessages()
+        this.notService.setErrorMessage("Error: " + error.error.message)
+      }
     )
   }
 }

@@ -12,9 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { SetGalleryComponent } from './set-gallery/set-gallery.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -31,12 +28,7 @@ import {MatButtonModule} from "@angular/material/button";
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatStepperModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
