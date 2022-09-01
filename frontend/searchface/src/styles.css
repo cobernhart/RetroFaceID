@@ -3,9 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.sMargin {
-  margin: 0.5rem;
+.primaryBackColor{
+  background-color: darkred;
 }
-.mMargin {
-  margin: 1rem;
-}
+

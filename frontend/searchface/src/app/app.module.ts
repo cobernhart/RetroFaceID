@@ -10,6 +10,7 @@ import { SetGalleryComponent } from './set-gallery/set-gallery.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { SettingsComponent } from './settings/settings.component';
 import { SetOutputPathComponent } from './set-output-path/set-output-path.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -29,6 +30,7 @@ import { SetOutputPathComponent } from './set-output-path/set-output-path.compon
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
