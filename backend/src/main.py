@@ -7,10 +7,13 @@ from torchvision import transforms
 from facenet_pytorch import MTCNN, extract_face
 import os
 from config import config
+from searchProgress import progress
 from services.createOutputFolder import createOutputFolder
 
 
 def loopImage(directory, listImages):
+    if config.runSearch is False:
+        return 
     wPATH = os.getcwd()
     imagePATHlist = os.listdir(directory)
     weights = ['1-arc-backbone.pth','2-cos-backbone.pth','3-arc+-backbone.pth', '4-cos+-backbone.pth']
@@ -25,6 +28,7 @@ def loopImage(directory, listImages):
                 loopImage(os.path.join(directory,imagePATH),listImages) #recursive call do loop through folder recusively
             continue  # if it is not an image file -> ignore and continue
         img = Image.open(os.path.join(wPATH, directory, imagePATH))
+        progress.imageCount = progress.imageCount + 1
         # DO PREPROCESSING
         faceBOX, probs = mtcnn.detect(img, landmarks=False)  ## detected face boxes
         for count, box in enumerate(faceBOX):
@@ -32,6 +36,7 @@ def loopImage(directory, listImages):
             face = (face / 255 - 0.5) / 0.5
             sImage = FaceImage(img, imagePATH,directory, box,
                                elasticFace.extractFeatures(face.unsqueeze(0)))
+            progress.faceCount = progress.faceCount + 1
             listImages.append(sImage)
 
 

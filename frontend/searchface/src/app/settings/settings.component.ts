@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
+  threshold = 1.6
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  rangeChange(t: any){
+    this.threshold = t
+  }
 }

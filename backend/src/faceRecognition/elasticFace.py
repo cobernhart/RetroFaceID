@@ -1,11 +1,12 @@
-"""elasticFace.py
-Object that handels feature extraction and comparison it uses consine distance as default.
+""" elasticFace.py
+    Object that handels feature extraction and comparison it uses consine distance as default.
 """
 from .backbones.iresnet import iresnet100
 from .distanceMetrics import cosineDistance, euclideanDistance, realEuclideanDistance
 import torch
 import os
 from FaceImage import FaceImage
+from searchProgress import progress
 
 class ElasticFace:
 
@@ -30,7 +31,6 @@ class ElasticFace:
             for gF in galleryFaces:
                 d = realEuclideanDistance(refFace.features, gF.features)
                 if d <= threshold:
+                    progress.matchCount = progress.matchCount + 1
                     distances.append((d,gF))
             return distances
-
-

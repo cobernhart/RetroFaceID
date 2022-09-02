@@ -1,9 +1,11 @@
 from flask import Flask, json, jsonify, request, abort
 from config import config
+from searchProgress import progress, resetprogress
 from main import frPipeline
 from flask_cors import CORS
 from services.createDetectFaceBoxes import findBoundingBoxes
 import logging
+import os
 api = Flask(__name__)
 cors = CORS(api)
 
@@ -55,10 +57,31 @@ def get_startSearch():
             'message': message
         })
         return response
+    resetprogress()
+    config.runSearch = True
     frPipeline(config.faces,config.faceId)
     api.logger.info(f'FaceRecognitionPipeline Started')
     response = jsonify({
         'message': 'Search finished'
+    })
+    return response
+
+@api.route('/search/stop', methods=['GET'])
+def get_stopSearch():
+    config.runSearch = False
+    response = jsonify({
+        'message': 'Search is stopping and output generated'
+    })
+    return response
+
+@api.route('/search/progress', methods=['GET'])
+def post_getProgress():
+    api.logger.info(f'Searchprogress')
+    response = jsonify({
+        'message': f'Searchprogress queried',
+        'imageCount': progress.imageCount,
+        'faceCount' : progress.faceCount,
+        'matchCount' : progress.matchCount
     })
     return response
 
@@ -67,16 +90,23 @@ def post_setGallery():
     config.galleryPath = request.data.decode().replace('"', '')
     api.logger.info(f'GalleryPath Set : {config.galleryPath}')
     response = jsonify({
-        'message': f'GalleryPath Set: {config.galleryPath}'
+        'message': f'GalleryPath set to {config.galleryPath}'
     })
     return response
 
 @api.route('/output/path', methods=['POST'])
 def post_setOutput():
     config.outputPath = request.data.decode().replace('"', '')
+    if os.path.exists(config.outputPath):
+        response = jsonify({
+            'message': f'Output directory exists already -> please choose a new name'
+            })
+        response.status = 422
+        return response
+
     api.logger.info(f'OutputPath Set : {config.outputPath}')
     response = jsonify({
-        'message': f'OutputPath Set: {config.outputPath}'
+        'message': f'OutputPath set to {config.outputPath}'
     })
     return response
 

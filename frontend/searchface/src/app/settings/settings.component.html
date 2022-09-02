@@ -1,1 +1,28 @@
-<p>settings works!</p>
+<div>
+  <div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="form-check-label" for="inlineRadio1">efCos</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">efCos+</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" checked>
+      <label class="form-check-label" for="inlineRadio3">efArc</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+      <label class="form-check-label" for="inlineRadio4">efArc+</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+      <label class="form-check-label" for="inlineRadio5">arcFace</label>
+    </div>
+  </div>
+  <div>
+    <label for="range" class="form-label">Threshold {{threshold}}</label>
+    <input (change)="rangeChange(range.value)" step='0.001' value='1.66' #range type="range" class="form-range" min="0" max="2" id="range">
+  </div>
+</div>

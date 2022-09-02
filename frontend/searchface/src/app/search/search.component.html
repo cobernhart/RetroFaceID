@@ -1,1 +1,19 @@
-<button type="button" class="btn btn-outline-primary" (click)="search()">search</button>
+<div class="container">
+<button *ngIf="started == false" type="button" class="btn btn-outline-primary" (click)="search()">Start</button>
+  <button *ngIf="started == true" type="button" class="btn btn-outline-danger" (click)="stopSearch()">Stop</button>
+
+<div class="info-container">
+  <div>
+    <span>imageCount</span>
+    <span>{{imageCount}}</span>
+  </div>
+  <div>
+    <span>faceCount</span>
+    <span>{{faceCount}}</span>
+  </div>
+  <div>
+    <span>matchCount</span>
+    <span>{{matchCount}}</span>
+  </div>
+</div>
+</div>

@@ -43,6 +43,13 @@ export class Service{
   requestSearch(): Observable<any> {
     return this.httpClient.get(this.BACKENDURL + '/search/start')
   }
+
+  stopSearch(): Observable<any>{
+    return this.httpClient.get(this.BACKENDURL + '/search/stop')
+  }
+  requestSearchProgress(): Observable<any> {
+    return this.httpClient.get(this.BACKENDURL + '/search/progress')
+  }
   handleError(error: HttpErrorResponse){
     console.log(error.error)
     return throwError(error)
