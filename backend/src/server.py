@@ -22,10 +22,10 @@ def post_detectFaces():
             'boxes': boxes
         })
         return response
-    boxesList = boxes.tolist() #prepare for json method
+    #prepare for json method
     response = jsonify({
-        'message': f'{str(len(boxesList)) + " faces detected"}',
-        'boxes': json.dumps(boxesList)
+        'message': f'{str(len(boxes)) + " faces detected"}',
+        'boxes': json.dumps(boxes.tolist())
     })
     return response
 
@@ -51,11 +51,17 @@ def get_startSearch():
             stringList.append(" a gallery path")
         if config.outputPath is None:
             stringList.append(" a output path")
+        if os.path.exists(config.outputPath):
+            response = jsonify({
+                'message': f'Search not started because output directory exists already -> please choose a new name'
+            })
+            response.status = 422
+            return response
         message += ','.join(stringList)
-        response.status = 422
         response = jsonify({
             'message': message
         })
+        response.status = 422
         return response
     resetprogress()
     config.runSearch = True
@@ -108,6 +114,16 @@ def post_setOutput():
     response = jsonify({
         'message': f'OutputPath set to {config.outputPath}'
     })
+    return response
+
+@api.route('/settings', methods=['POST'])
+def post_setSettings():
+    data = request.get_json()
+    config.method = data['method']
+    config.threshold = data['threshold']
+    response = {
+        'message': f'Updated settings Method {config.method} with Threshold {config.threshold} is used'
+    }
     return response
 
 if __name__ == '__main__':

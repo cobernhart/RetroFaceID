@@ -50,6 +50,10 @@ export class Service{
   requestSearchProgress(): Observable<any> {
     return this.httpClient.get(this.BACKENDURL + '/search/progress')
   }
+
+  sendSettings(data: any): Observable<any>{
+    return this.httpClient.post(this.BACKENDURL + '/settings',data)
+  }
   handleError(error: HttpErrorResponse){
     console.log(error.error)
     return throwError(error)

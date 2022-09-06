@@ -19,11 +19,15 @@ export class SearchComponent implements OnInit {
   }
 
   search(){
+    this.imageCount = 0
+    this.faceCount = 0
+    this.matchCount = 0
     this.started = true
     this.searchProgress()
     this.service.requestSearch().subscribe(
       res =>{
         this.started = false
+        this.queryProgress()
         this.subscription.unsubscribe();
         this.notService.clearAllMessages()
         this.notService.setSuccessMessage("Success: " + res.message)
@@ -53,18 +57,23 @@ export class SearchComponent implements OnInit {
 
   searchProgress(){
     const source = interval(5000);
-    this.subscription = source.subscribe(val => this.service.requestSearchProgress().subscribe
+    this.subscription = source.subscribe(val => this.queryProgress());
+  }
+
+
+queryProgress(){
+    this.service.requestSearchProgress().subscribe
     (res =>{
-      this.imageCount = res.imageCount
-      this.faceCount = res.faceCount
-      this.matchCount = res.matchCount
-    },
+        this.imageCount = res.imageCount
+        this.faceCount = res.faceCount
+        this.matchCount = res.matchCount
+      },
       error => {
         this.started = false
         this.notService.clearAllMessages()
         this.notService.setErrorMessage("Error: " + error.error.message)
-      })
-    );
+      }
+      )
   }
 
 

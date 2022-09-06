@@ -27,10 +27,10 @@ class ElasticFace:
 
     def verifyFaces(self,refFace: FaceImage, galleryFaces: [FaceImage],threshold: float):
         with torch.no_grad():
-            distances = []
+            matches = []
             for gF in galleryFaces:
                 d = realEuclideanDistance(refFace.features, gF.features)
-                if d <= threshold:
+                if d <= float(threshold):
                     progress.matchCount = progress.matchCount + 1
-                    distances.append((d,gF))
-            return distances
+                    matches.append((d,gF))
+            return matches

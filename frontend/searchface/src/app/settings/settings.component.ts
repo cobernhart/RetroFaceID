@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Service} from "../services";
+import {NotificationService} from "../notification-service";
 
 @Component({
   selector: 'app-settings',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
   threshold = 0
-  method = 'efCos'
+  method = 'efArc'
   optimalThresholds = [
     {  name: 'efCos', limit : 1.61 },
     { name: 'efCos+', limit: 1.62},
@@ -16,13 +18,13 @@ export class SettingsComponent implements OnInit {
     {name : 'arcFace', limit : 1.65}
     ]
 
-  constructor() { }
+  constructor(private service: Service, private notService: NotificationService) { }
 
   ngOnInit(): void {
+    this.threshold = this.getOptimalThreshold(this.method)
   }
 
   updateWeight(method: string){
-    console.log(method)
     this.method = method
     this.threshold = this.getOptimalThreshold(this.method)
   }
@@ -31,8 +33,23 @@ export class SettingsComponent implements OnInit {
     return this.optimalThresholds.find(a => a.name == method).limit
 
   }
-
   rangeChange(t: any){
     this.threshold = t
+  }
+
+  saveSetting(){
+    this.service.sendSettings({
+      'method': this.method,
+      'threshold': this.threshold
+    }).subscribe(
+      res => {
+        this.notService.clearAllMessages()
+        this.notService.setSuccessMessage(res.message)
+      },
+      error => { // @ts-ignore
+        this.notService.clearAllMessages()
+        this.notService.setErrorMessage("Error: " + error.error.message)
+      }
+    )
   }
 }
