@@ -23,7 +23,7 @@
   </div>
   <div>
     <label for="range" class="form-label">Threshold {{threshold}}</label>
-    <input (change)="rangeChange(range.value)" step='0.001' [value]="threshold"  #range type="range" class="form-range" min="0" max="2" id="range">
+    <input (input)="rangeChange(range.value)"  step='0.001' [value]="threshold"  #range type="range" class="form-range" min="0" max="2" id="range">
   </div>
   <div class="">
     <button type="button" class="btn btn-outline-primary" (click)="saveSetting()">Save</button>

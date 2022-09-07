@@ -5,7 +5,7 @@ import {Service} from "../services";
 @Component({
   selector: 'app-set-output-path',
   templateUrl: './set-output-path.component.html',
-  styleUrls: ['./set-output-path.component.css']
+  styleUrls: ['./set-output-path.component.scss']
 })
 export class SetOutputPathComponent implements OnInit {
 

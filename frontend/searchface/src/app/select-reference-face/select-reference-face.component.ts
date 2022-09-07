@@ -5,7 +5,7 @@ import {NotificationService} from "../notification-service";
 @Component({
   selector: 'select-reference-face',
   templateUrl: './select-reference-face.component.html',
-  styleUrls: ['./select-reference-face.component.css']
+  styleUrls: ['./select-reference-face.component.scss']
 })
 
 

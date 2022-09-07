@@ -1,9 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
 .primaryBackColor{
-  background-color: darkred;
+  background-color: lightgray;
 }
+
+
+.cvl-color{
+  background-color: #3296c8;
+}
+@import 'custom.scss';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+.btn:hover {
+  color: white;
+}
+
 

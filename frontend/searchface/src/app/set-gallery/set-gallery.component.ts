@@ -8,7 +8,7 @@ import {NotificationService} from "../notification-service";
 @Component({
   selector: 'set-gallery',
   templateUrl: './set-gallery.component.html',
-  styleUrls: ['./set-gallery.component.css']
+  styleUrls: ['./set-gallery.component.scss']
 })
 export class SetGalleryComponent implements OnInit {
   selectedFile = null;
