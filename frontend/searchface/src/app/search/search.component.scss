@@ -1,11 +1,14 @@
 .container{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .info-container{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-container > div {

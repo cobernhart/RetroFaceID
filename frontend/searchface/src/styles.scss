@@ -1,23 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import 'custom.scss';
+@import '../node_modules/bootstrap/scss/bootstrap';
+html, body { height: 100%; background-color: #e8e7e4
+}
+body { margin: 0; font-family: 'Roboto', sans-serif;}
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+.btn:hover {
+  color: white;
+}
+.btn:active {
+  color: white;
+}
 
 .primaryBackColor{
-  background-color: lightgray;
+  background-color: #ffffff;
 }
 
 
 .cvl-color{
   background-color: #3296c8;
-}
-@import 'custom.scss';
-@import '../node_modules/bootstrap/scss/bootstrap';
-
-.btn:hover {
-  color: white;
 }
 
 

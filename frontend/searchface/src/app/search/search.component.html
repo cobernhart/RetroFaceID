@@ -1,6 +1,5 @@
 <div class="container">
-<button *ngIf="started == false" type="button" class="btn btn-outline-primary" (click)="search()">Start</button>
-  <button *ngIf="started == true" type="button" class="btn btn-outline-danger" (click)="stopSearch()">Stop</button>
+
 
 <div class="info-container">
   <div>
@@ -16,4 +15,8 @@
     <span>{{matchCount}}</span>
   </div>
 </div>
+  <div>
+  <button *ngIf="started == false" type="button" class="btn btn-outline-primary" (click)="search()">Start</button>
+  <button *ngIf="started == true" type="button" class="btn btn-outline-danger" (click)="stopSearch()">Stop</button>
+  </div>
 </div>

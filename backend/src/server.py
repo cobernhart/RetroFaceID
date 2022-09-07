@@ -69,10 +69,10 @@ def get_startSearch():
     start = time.time()
     frPipeline(config.faces,config.faceId)
     end = time.time()
-    api.logger.info(f'Search finished in {(end - start) / 60} min')
+    api.logger.info(f'Search finished in {int((end - start) / 60)} min')
     api.logger.info(f'FaceRecognitionPipeline Started')
     response = jsonify({
-        'message': f'Search finished in {(end - start) / 60} min'
+        'message': f'Search finished in {int((end - start) / 60)} min'
     })
     return response
 

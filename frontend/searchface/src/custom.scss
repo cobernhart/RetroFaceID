@@ -1,5 +1,8 @@
 $primary : #3296c8;
+$success : #32c853;
+$danger : #c83232;
 $theme-colors: (
   "primary": $primary,
-  "danger": #ff4136
+  "danger": $danger,
+  "success": $success,
 );

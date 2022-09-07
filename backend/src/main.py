@@ -29,6 +29,9 @@ def loopImage(directory, listImages,elasticFace):
         progress.imageCount = progress.imageCount + 1
         # DO PREPROCESSING
         faceBOX, probs,landmarks = mtcnn.detect(img, landmarks=True)  ## detected face boxes
+        if faceBOX is None: #no faces detected
+
+            continue
         for count, box in enumerate(faceBOX):
             alignedImage = rotate_image(img, landmarks[count])
             face = extract_face(alignedImage, box, image_size=112, margin=40)
