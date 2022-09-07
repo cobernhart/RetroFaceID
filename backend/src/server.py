@@ -6,6 +6,7 @@ from flask_cors import CORS
 from services.createDetectFaceBoxes import findBoundingBoxes
 import logging
 import os
+import time
 api = Flask(__name__)
 cors = CORS(api)
 
@@ -53,7 +54,7 @@ def get_startSearch():
             stringList.append(" a output path")
         if os.path.exists(config.outputPath):
             response = jsonify({
-                'message': f'Search not started because output directory exists already -> please choose a new name'
+                'message': f'Search not started because output directory exists already. Please choose a new name'
             })
             response.status = 422
             return response
@@ -65,10 +66,13 @@ def get_startSearch():
         return response
     resetprogress()
     config.runSearch = True
+    start = time.time()
     frPipeline(config.faces,config.faceId)
+    end = time.time()
+    api.logger.info(f'Search finished in {(end - start) / 60} min')
     api.logger.info(f'FaceRecognitionPipeline Started')
     response = jsonify({
-        'message': 'Search finished'
+        'message': f'Search finished in {(end - start) / 60} min'
     })
     return response
 
@@ -105,7 +109,7 @@ def post_setOutput():
     config.outputPath = request.data.decode().replace('"', '')
     if os.path.exists(config.outputPath):
         response = jsonify({
-            'message': f'Output directory exists already -> please choose a new name'
+            'message': f'Output directory exists already. Please choose a new name'
             })
         response.status = 422
         return response
@@ -122,7 +126,7 @@ def post_setSettings():
     config.method = data['method']
     config.threshold = data['threshold']
     response = {
-        'message': f'Updated settings Method {config.method} with Threshold {config.threshold} is used'
+        'message': f'Updated settings method {config.method} with threshold {config.threshold} is used'
     }
     return response
 
