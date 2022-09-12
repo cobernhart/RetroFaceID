@@ -25,12 +25,10 @@ class ElasticFace:
     def extractFeatures(self,imgTensor):
         return self.backbone(imgTensor)[0]
 
-    def verifyFaces(self,refFace: FaceImage, galleryFaces: [FaceImage],threshold: float):
+    def verifyFaces(self,refFace: FaceImage, gF: FaceImage,threshold: float):
         with torch.no_grad():
-            matches = []
-            for gF in galleryFaces:
-                d = realEuclideanDistance(refFace.features, gF.features)
-                if d <= float(threshold):
-                    progress.matchCount = progress.matchCount + 1
-                    matches.append((d,gF))
-            return matches
+            match = False
+            d = realEuclideanDistance(refFace.features, gF.features)
+            if d <= float(threshold):
+                match = True
+            return (d, gF,match)

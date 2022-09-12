@@ -8,11 +8,11 @@ from facenet_pytorch import MTCNN, extract_face
 import os
 from config import config
 from searchProgress import progress
-from services.createOutputFolder import createOutputFolder
+from services.outputService import createOutputFolder, saveImageInOutputFolder
 from services.rotateImage import rotate_image
 
 
-def loopImage(directory, listImages,elasticFace):
+def loopImage(refFace, directory, listImages,elasticFace):
     if config.runSearch is False:
         return 
     wPATH = os.getcwd()
@@ -21,9 +21,9 @@ def loopImage(directory, listImages,elasticFace):
 
     # loop through all images in folders
     for imagePATH in imagePATHlist:
-        if ".jpg" not in imagePATH and ".jpeg" not in imagePATH and ".png" not in imagePATH:
+        if ".jpg" not in imagePATH and ".jpeg" not in imagePATH and ".png" not in imagePATH: #:TODO .tif
             if os.path.isdir(os.path.join(directory,imagePATH)):
-                loopImage(os.path.join(directory,imagePATH),listImages,elasticFace) #recursive call do loop through folder recusively
+                loopImage(refFace, os.path.join(directory,imagePATH),listImages,elasticFace) #recursive call do loop through folder recusively
             continue  # if it is not an image file -> ignore and continue
         img = Image.open(os.path.join(wPATH, directory, imagePATH))
         progress.imageCount = progress.imageCount + 1
@@ -39,7 +39,12 @@ def loopImage(directory, listImages,elasticFace):
             sImage = FaceImage(img, imagePATH, directory, box,
                                elasticFace.extractFeatures(face.unsqueeze(0)),count)
             progress.faceCount = progress.faceCount + 1
-            listImages.append(sImage)
+            # listImages.append(sImage) #neeeds to be remove
+            distance,match, matchBool =  elasticFace.verifyFaces(refFace, sImage, config.threshold) #check if match
+            if matchBool:
+                progress.matchCount = progress.matchCount + 1
+                saveImageInOutputFolder((distance,match))
+
 
 
 def frPipeline(refFaces,faceId):
@@ -71,7 +76,8 @@ def frPipeline(refFaces,faceId):
     refFace.features = elasticFace.extractFeatures(refFace.img.unsqueeze(0))
     faceGallery = []
     faceBOXES = []
-    loopImage(GALLERYPATH,listImages,elasticFace)
-    matches = elasticFace.verifyFaces(refFace, listImages, config.threshold)
-    createOutputFolder(config.originalReferenceImage,refFace, matches)
+    createOutputFolder(config.originalReferenceImage, refFace)
+    loopImage(refFace,GALLERYPATH,listImages,elasticFace)
+    #matches = elasticFace.verifyFaces(refFace, listImages, config.threshold)
+
 
