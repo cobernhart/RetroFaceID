@@ -1,6 +1,6 @@
-from flask import Flask, json, jsonify, request, abort
+from flask import Flask, json, jsonify, request
 from config import config
-from searchProgress import progress, resetprogress
+from src.services.searchProgress import progress, resetprogress
 from main import frPipeline
 from flask_cors import CORS
 from services.createDetectFaceBoxes import findBoundingBoxes

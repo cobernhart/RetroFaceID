@@ -5,8 +5,8 @@ from .backbones.iresnet import iresnet100
 from .distanceMetrics import cosineDistance, euclideanDistance, realEuclideanDistance
 import torch
 import os
-from FaceImage import FaceImage
-from searchProgress import progress
+from services.FaceImage import FaceImage
+from services.searchProgress import progress
 
 class ElasticFace:
 
@@ -16,7 +16,7 @@ class ElasticFace:
 
     def setWeights(self,wName):
         PATH = os.getcwd()
-        self.backbone.load_state_dict(torch.load(os.path.join(PATH,'faceRecognition/backbones/weights/', wName), map_location=torch.device('cpu')))
+        self.backbone.load_state_dict(torch.load(os.path.join(PATH,'elasticFace/backbones/weights/', wName), map_location=torch.device('cpu')))
         self.backbone.eval()
 
     def setDistanceMetric(self,metric):

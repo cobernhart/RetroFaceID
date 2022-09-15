@@ -2,7 +2,7 @@ from facenet_pytorch import MTCNN, extract_face
 from PIL import Image
 from config import config
 from services.rotateImage import rotate_image
-from FaceImage import FaceImage
+from services.FaceImage import FaceImage
 
 def findBoundingBoxes(imageFile):
     img = Image.open(imageFile)

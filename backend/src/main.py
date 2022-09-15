@@ -1,13 +1,12 @@
 """main.py
 """
-from faceRecognition.elasticFace import ElasticFace
+from elasticFace.elasticFace import ElasticFace
 from PIL import Image
-from FaceImage import FaceImage
-from torchvision import transforms
+from src.services.FaceImage import FaceImage
 from facenet_pytorch import MTCNN, extract_face
 import os
 from config import config
-from searchProgress import progress
+from src.services.searchProgress import progress
 from services.outputService import createOutputFolder, saveImageInOutputFolder
 from services.rotateImage import rotate_image
 
@@ -21,11 +20,13 @@ def loopImage(refFace, directory, listImages,elasticFace):
 
     # loop through all images in folders
     for imagePATH in imagePATHlist:
-        if ".jpg" not in imagePATH and ".jpeg" not in imagePATH and ".png" not in imagePATH: #:TODO .tif
+        if ".jpg" not in imagePATH and ".jpeg" not in imagePATH and ".png" not in imagePATH and ".tiff" not in imagePATH:
             if os.path.isdir(os.path.join(directory,imagePATH)):
                 loopImage(refFace, os.path.join(directory,imagePATH),listImages,elasticFace) #recursive call do loop through folder recusively
             continue  # if it is not an image file -> ignore and continue
         img = Image.open(os.path.join(wPATH, directory, imagePATH))
+        if ".tiff" in imagePATH:
+            img = img.convert("RGB")
         progress.imageCount = progress.imageCount + 1
         # DO PREPROCESSING
         faceBOX, probs,landmarks = mtcnn.detect(img, landmarks=True)  ## detected face boxes
@@ -67,7 +68,6 @@ def frPipeline(refFaces,faceId):
     else:
         weight = weights[4]
 
-    print(weight)
     elasticFace.setWeights(os.path.join(weight))
     mtcnn = MTCNN(image_size=112, margin=40, thresholds=[0.6, 0.7, 0.7], keep_all=True, post_process=False, device='cpu')
 
