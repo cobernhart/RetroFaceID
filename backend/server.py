@@ -1,12 +1,14 @@
-from flask import Flask, json, jsonify, request
-from config import config
-from src.services.searchProgress import progress, resetprogress
-from main import frPipeline
-from flask_cors import CORS
-from services.createDetectFaceBoxes import findBoundingBoxes
 import logging
 import os
 import time
+
+from flask import Flask, json, jsonify, request
+from flask_cors import CORS
+from src.services.searchProgress import progress, resetprogress
+from src.services.createDetectFaceBoxes import findBoundingBoxes
+from src.config import config
+from src.main import frPipeline
+
 api = Flask(__name__)
 cors = CORS(api)
 
@@ -130,5 +132,8 @@ def post_setSettings():
     }
     return response
 
+def start():
+    api.run(host='0.0.0.0')
+
 if __name__ == '__main__':
-    api.run()
+    start()

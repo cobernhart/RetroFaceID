@@ -1,4 +1,3 @@
-from config import config
 from PIL import Image
 import os
 import numpy as np
@@ -7,6 +6,7 @@ from matplotlib import pyplot as plt
 import shutil
 import csv
 import torchvision.transforms as T
+from ..config import config
 import numpy as np
 import matplotlib.pyplot as plt
 

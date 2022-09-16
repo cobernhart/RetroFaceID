@@ -1,14 +1,14 @@
 """main.py
 """
-from elasticFace.elasticFace import ElasticFace
+from .elasticFace.elasticFace import ElasticFace
 from PIL import Image
 from src.services.FaceImage import FaceImage
 from facenet_pytorch import MTCNN, extract_face
 import os
-from config import config
+from .config import config
 from src.services.searchProgress import progress
-from services.outputService import createOutputFolder, saveImageInOutputFolder
-from services.rotateImage import rotate_image
+from src.services.outputService import createOutputFolder, saveImageInOutputFolder
+from src.services.rotateImage import rotate_image
 
 
 def loopImage(refFace, directory, listImages,elasticFace):
@@ -24,6 +24,8 @@ def loopImage(refFace, directory, listImages,elasticFace):
             if os.path.isdir(os.path.join(directory,imagePATH)):
                 loopImage(refFace, os.path.join(directory,imagePATH),listImages,elasticFace) #recursive call do loop through folder recusively
             continue  # if it is not an image file -> ignore and continue
+        elif imagePATH.startswith('.'): #some not readable files that have same types like images
+            continue
         img = Image.open(os.path.join(wPATH, directory, imagePATH))
         if ".tiff" in imagePATH:
             img = img.convert("RGB")

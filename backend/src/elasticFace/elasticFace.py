@@ -1,12 +1,11 @@
 """ elasticFace.py
     Object that handels feature extraction and comparison it uses consine distance as default.
 """
-from .backbones.iresnet import iresnet100
-from .distanceMetrics import cosineDistance, euclideanDistance, realEuclideanDistance
 import torch
 import os
-from services.FaceImage import FaceImage
-from services.searchProgress import progress
+from .backbones.iresnet import iresnet100
+from .distanceMetrics import cosineDistance, euclideanDistance, realEuclideanDistance
+from ..services.FaceImage import FaceImage
 
 class ElasticFace:
 
@@ -16,7 +15,7 @@ class ElasticFace:
 
     def setWeights(self,wName):
         PATH = os.getcwd()
-        self.backbone.load_state_dict(torch.load(os.path.join(PATH,'elasticFace/backbones/weights/', wName), map_location=torch.device('cpu')))
+        self.backbone.load_state_dict(torch.load(os.path.join(PATH,'src','elasticFace','backbones','weights', wName), map_location=torch.device('cpu')))
         self.backbone.eval()
 
     def setDistanceMetric(self,metric):

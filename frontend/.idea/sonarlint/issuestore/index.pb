@@ -3,8 +3,6 @@ X
 (searchface/src/app/app-routing.module.ts,a/7/a775371d475f72bdd42f83c7c4508b55bb138bb3
 €
 Psearchface/src/app/select-reference-face/select-reference-face.component.spec.ts,d/4/d4d89891f6c53a0850233d207b1ae2027c83a6b2
-E
-searchface/.gitignore,0/a/0a59f6fd65fe05c1218befeb342af0fa8b635ae5
 S
 #searchface/src/app/app.component.ts,6/c/6cfbd82b27b68de1df1c9bc725a89c5dee186655
 X
@@ -33,8 +31,6 @@ q
 Asearchface/src/app/set-output-path/set-output-path.component.html,5/9/599fd04f561746b835288ca3b57471b76402847f
 o
 ?searchface/src/app/set-output-path/set-output-path.component.ts,d/c/dc2ee25176791145c5a4d0c15f23baa7dca439ca
-N
-searchface/src/app/services.ts,d/9/d986fa3c2940f375ef515b7e0d83d3d7afc411ee
 P
  searchface/src/app/app.module.ts,6/2/6260e1e4914cc0e5b71657bef22df9045df4d41f
 L
@@ -45,16 +41,12 @@ H
 searchface/karma.conf.js,0/0/0038391f37a0d62ff7ce322f1e5ae4059cdf2351
 L
 searchface/package-lock.json,d/e/de0e565fa95d2dff0b2f4f8abbf244d23094e9f5
-G
-searchface/package.json,8/3/8337bcbf7e3e00d6e49f732b51fbf5d697b064d1
 F
 searchface/src/test.ts,6/1/612e2c88fab5d22f1b1ac7807950727e20117288
 K
 searchface/src/polyfills.ts,d/3/d311e056e5ebf963f7feed8fb47b6140bfa1839d
 F
 searchface/src/main.ts,7/0/709ca40c0c220ac61c8c295f9f52c996caad2a89
-G
-searchface/angular.json,d/7/d71466567f66d140d2591d6dcc2ac6668ccd183f
 I
 searchface/src/index.html,e/d/edd5e2a7a1eed48ab5d4245fe059dd58413cca82
 ]
@@ -79,3 +71,5 @@ U
 %searchface/src/app/app.component.html,f/6/f6cf2e8a24ed67a8c1fb6707bc409790b6fb86ef
 J
 searchface/src/styles.scss,1/6/164f66d6cfab5670ed2ea07d62baa9ff7d0bc454
+G
+searchface/package.json,8/3/8337bcbf7e3e00d6e49f732b51fbf5d697b064d1
