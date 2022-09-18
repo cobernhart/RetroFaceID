@@ -49,8 +49,6 @@ F
 searchface/src/main.ts,7/0/709ca40c0c220ac61c8c295f9f52c996caad2a89
 I
 searchface/src/index.html,e/d/edd5e2a7a1eed48ab5d4245fe059dd58413cca82
-]
--searchface/src/app/search/search.component.ts,7/c/7c668c745ea545731cd91857376b4c1168a6f91c
 }
 Msearchface/src/app/select-reference-face/select-reference-face.component.scss,a/9/a94955b2c8471079e874d74e5f9c0fb8d21df271
 a
@@ -59,8 +57,6 @@ c
 3searchface/src/app/settings/settings.component.scss,b/d/bd38e95145260be8248c5ab2c56e7f5c8a14ed18
 c
 3searchface/src/app/settings/settings.component.html,d/8/d83a14c748bac37115085645f4d3a239e6a299ba
-_
-/searchface/src/app/search/search.component.html,4/0/40eb7e56864d12aa55f67dadbbdb921a0a88260c
 _
 /searchface/src/app/search/search.component.scss,c/b/cb445f4b88c4a578da22d3f0878f06a0672ea915
 J

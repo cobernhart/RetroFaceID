@@ -24,6 +24,8 @@ export class SearchComponent implements OnInit {
     this.matchCount = 0
     this.started = true
     this.searchProgress()
+    this.notService.clearAllMessages()
+    this.notService.setSuccessMessage("Success: " + "Search started")
     this.service.requestSearch().subscribe(
       res =>{
         this.started = false
