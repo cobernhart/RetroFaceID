@@ -9,6 +9,8 @@ import torchvision.transforms as T
 from ..config import config
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 
 def createOutputFolder(originalImage,refFace):
     if os.path.exists(config.outputPath):
@@ -48,3 +50,4 @@ def saveImageInOutputFolder(match):
         sc = ax.add_patch(patches.Rectangle((box[0], box[1]), box[2] - box[0], box[3] - box[1], edgecolor='red',facecolor='none', linewidth=2))
         MATCHED_FOLDER_PATH = os.path.join(config.outputPath, "image-matched-folder")
         fig.savefig(os.path.join(MATCHED_FOLDER_PATH,"m-"+"c-"+str(faceImg.faceID)+"-"+ faceImg.originalName), bbox_inches='tight')
+        plt.close()

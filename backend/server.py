@@ -45,9 +45,6 @@ def post_selectFace():
 
 @api.route('/search/start', methods=['GET'])
 def get_startSearch():
-    print("Output " + str(config.outputPath))
-    print("Gallery " + config.galleryPath)
-    print("FaceId " + str(config.faceId))
     if os.path.exists(config.outputPath):
         response = jsonify({
             'message': f'Search not started because output directory exists already. Please choose a new name'
@@ -74,10 +71,10 @@ def get_startSearch():
     resetprogress()
     config.runSearch = True
     start = time.time()
+    api.logger.info(f'FaceRecognitionPipeline Started')
     frPipeline(config.faces,config.faceId)
     end = time.time()
     api.logger.info(f'Search finished in {int((end - start) / 60)} min')
-    api.logger.info(f'FaceRecognitionPipeline Started')
     response = jsonify({
         'message': f'Search finished in {int((end - start) / 60)} min'
     })
