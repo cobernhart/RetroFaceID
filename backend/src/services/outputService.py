@@ -13,7 +13,6 @@ import matplotlib.pyplot as plt
 def createOutputFolder(originalImage,refFace):
     if os.path.exists(config.outputPath):
         config.errorMessage = "Output directory exists already -> please choose a new name"
-        abort(422)
     os.mkdir(config.outputPath) #createOutputFolder
     #first save original referece image
     originalImage.save(os.path.join(config.outputPath,"reference-original-"+ originalImage.filename))

@@ -12,14 +12,14 @@ from src.services.rotateImage import rotate_image
 
 
 def loopImage(refFace, directory, listImages,elasticFace):
-    if config.runSearch is False:
-        return 
     wPATH = os.getcwd()
     imagePATHlist = os.listdir(directory)
     mtcnn = MTCNN(image_size=112, margin=40, thresholds=[0.6, 0.7, 0.7], keep_all=True, post_process=False, device='cpu')
 
     # loop through all images in folders
     for imagePATH in imagePATHlist:
+        if config.runSearch is False:
+            return
         if ".jpg" not in imagePATH and ".jpeg" not in imagePATH and ".png" not in imagePATH and ".tiff" not in imagePATH:
             if os.path.isdir(os.path.join(directory,imagePATH)):
                 loopImage(refFace, os.path.join(directory,imagePATH),listImages,elasticFace) #recursive call do loop through folder recusively
@@ -33,7 +33,6 @@ def loopImage(refFace, directory, listImages,elasticFace):
         # DO PREPROCESSING
         faceBOX, probs,landmarks = mtcnn.detect(img, landmarks=True)  ## detected face boxes
         if faceBOX is None: #no faces detected
-
             continue
         for count, box in enumerate(faceBOX):
             alignedImage = rotate_image(img, landmarks[count])
@@ -71,8 +70,6 @@ def frPipeline(refFaces,faceId):
         weight = weights[4]
 
     elasticFace.setWeights(os.path.join(weight))
-    mtcnn = MTCNN(image_size=112, margin=40, thresholds=[0.6, 0.7, 0.7], keep_all=True, post_process=False, device='cpu')
-
     refFace = refFaces[faceId]
     refFace.img = (refFace.img / 255 - 0.5) / 0.5
     refFace.features = elasticFace.extractFeatures(refFace.img.unsqueeze(0))
@@ -80,6 +77,7 @@ def frPipeline(refFaces,faceId):
     faceBOXES = []
     createOutputFolder(config.originalReferenceImage, refFace)
     loopImage(refFace,GALLERYPATH,listImages,elasticFace)
+
     #matches = elasticFace.verifyFaces(refFace, listImages, config.threshold)
 
 

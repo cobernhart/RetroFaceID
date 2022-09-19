@@ -35,6 +35,7 @@ def post_detectFaces():
 @api.route('/face/select', methods=['POST'])
 def post_selectFace():
     config.faceId = int(request.args.get('id'))
+    print("Id" + str(config.faceId))
     api.logger.info(f'Face #{config.faceId}')
     response = jsonify({
         'message': f'Face #{config.faceId} selected',
@@ -44,22 +45,26 @@ def post_selectFace():
 
 @api.route('/search/start', methods=['GET'])
 def get_startSearch():
-    if config.faceId is None or config.galleryPath is None or config.outputPath is None:
+    print("Output " + str(config.outputPath))
+    print("Gallery " + config.galleryPath)
+    print("FaceId " + str(config.faceId))
+    if os.path.exists(config.outputPath):
+        response = jsonify({
+            'message': f'Search not started because output directory exists already. Please choose a new name'
+        })
+        response.status = 422
+        return response
+    if config.faceId is None or config.galleryPath is "" or config.outputPath is "":
         api.logger.info(f'Search not started configs missing')
         message = "Please provide following configurations "
         stringList = []
         if config.faceId is None:
             stringList.append("a valid face")
-        if config.galleryPath is None:
+        if config.galleryPath is "":
             stringList.append(" a gallery path")
-        if config.outputPath is None:
+        if config.outputPath is "":
             stringList.append(" a output path")
-        if os.path.exists(config.outputPath):
-            response = jsonify({
-                'message': f'Search not started because output directory exists already. Please choose a new name'
-            })
-            response.status = 422
-            return response
+
         message += ','.join(stringList)
         response = jsonify({
             'message': message

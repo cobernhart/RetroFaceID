@@ -5,8 +5,7 @@
 3. Navigate with the shell to backend and create a virtualEnv with the command virtualenv deepActENV
 4. Activate deepActENV with the command PATH\backend\deepActENV\Scripts\activate 
 5. Install requirements with pip install -r requirements.txt
-6. Install gunicorn with pip install gunicorn
 
 # Run 
 1. Make sure the environment is activated
-2. Run gunicorn --workers=2 -b 127.0.0.1:5000 'server:api'
+2. Run py server.py
