@@ -1,4 +1,5 @@
-# Identification of Actors in the Photo Collection of the Theatre Museum of Vienna with Deep Learning Image Recognition
+# AI Based Actors Identification with High
+Intra-Class Variations
 While deep learning based face recognition surpasses human performance in constrained settings, it still struggles to achieve similar results applied in completely unconstrained settings. 
 This bachelor thesis explores the effectiveness of state-of-the-art face recognition models in the specific case of identifying actors in a historical photography collection of the Theatre Museum Vienna. Actors can be pictured at different angles and poses, at a different age, with masks and costumes leading to strong intra-class variations.
 In addition, images might show signs of decay due to their historical nature, further increasing the difficulty for a face recognition model to make correct predictions. 
@@ -6,4 +7,6 @@ This bachelor thesis shows that ElasticFace, a face recognition model trained us
 
 
 —keywords—<br>
-*face-recognition face-detection deeplearning actor identification verification theatremuseum vienna imagerecognition project programming gui python historic photograph protrait unconstrained*
+*Deep learning, face recognition, face detection,
+actor identification, historical image collection, high intra-class
+variations*
