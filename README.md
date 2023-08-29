@@ -1,4 +1,4 @@
-# AI Based Actors Identification with High
+# RetroFaceID: Face Recognition in Historical Image Archives
 Intra-Class Variations
 While deep learning based face recognition surpasses human performance in constrained settings, it still struggles to achieve similar results applied in completely unconstrained settings. 
 This bachelor thesis explores the effectiveness of state-of-the-art face recognition models in the specific case of identifying actors in a historical photography collection of the Theatre Museum Vienna. Actors can be pictured at different angles and poses, at a different age, with masks and costumes leading to strong intra-class variations.
