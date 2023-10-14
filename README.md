@@ -1,12 +1,3 @@
 # RetroFaceID: Face Recognition in Historical Image Archives
 Intra-Class Variations
-While deep learning based face recognition surpasses human performance in constrained settings, it still struggles to achieve similar results applied in completely unconstrained settings. 
-This bachelor thesis explores the effectiveness of state-of-the-art face recognition models in the specific case of identifying actors in a historical photography collection of the Theatre Museum Vienna. Actors can be pictured at different angles and poses, at a different age, with masks and costumes leading to strong intra-class variations.
-In addition, images might show signs of decay due to their historical nature, further increasing the difficulty for a face recognition model to make correct predictions. 
-This bachelor thesis shows that ElasticFace, a face recognition model trained using a novel learning loss strategy, achieves 79.6\% accuracy on the museum's photo database. Based on those outcomes, deploying face recognition to analyse historical image collections delivers valuable results for historians. To make this state-of-the-art technology accessible a tool is developed in cooperation with the Theatre Museum Vienna. 
-
-
-—keywords—<br>
-*Deep learning, face recognition, face detection,
-actor identification, historical image collection, high intra-class
-variations*
+The Theatre Museum Vienna possesses an extensive archive of approximately 1.6 million historical images, a significant portion of which remains unlabeled. This paper introduces RetroFaceID, a state-of-the-art face recognition tool designed to improve the labeling process for historians. Built on advanced machine learning algorithms, the tool offers a semi-automated workflow that significantly enhances productivity and label quality. To validate its effectiveness, a new dataset is created from the Theatre Museum's archive, incorporating multiple types of intra-class variations such as age, pose, and facial expressions. The tool's face recognition model achieves an accuracy of 79.6\% on this dataset, outperforming existing approaches. The results demonstrate the tool's transformative potential for historical research, enabling efficient and objective search, identification, and verification of historical figures in large-scale datasets.
